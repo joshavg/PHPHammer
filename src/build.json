@@ -18,13 +18,22 @@
                 "builder": "changeowner",
                 "owner": "www-data",
                 "dirs": "$rightsdirs"
+            },
+            {
+                "builder": "changemod",
+                "mode": "0775",
+                "dirs": "$rightsdirs"
             }
         ],
         
         "cacheclear": [
             {
                 "builder": "console",
-                "arg": "php app/console cache:clear"
+                "arg": "olol"
+            },
+            {
+                "builder": "target",
+                "target": "rights"
             }
         ]
     }
