@@ -1,9 +1,31 @@
 {
     "name": "Jalol",
     "version": "1.0",
+
+    "globals": {
+        "rightsdirs": [
+            "app/cache",
+            "app/logs",
+            "web/uploads/types",
+            "web/uploads/mandators",
+            "web/uploads/organisations"
+        ]
+    },
+    
     "targets": {
-        "update": {
-            "console": "php app/console cache:clear"
-        }
+        "rights": [
+            {
+                "builder": "changeowner",
+                "owner": "www-data",
+                "dirs": "$rightsdirs"
+            }
+        ],
+        
+        "cacheclear": [
+            {
+                "builder": "console",
+                "arg": "php app/console cache:clear"
+            }
+        ]
     }
 }
