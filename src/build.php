@@ -10,9 +10,9 @@ foreach(scandir(__DIR__ . '/builders/') as $path) {
 $jsonPath = getcwd() . DIRECTORY_SEPARATOR . 'build.json';
 
 if(!file_exists($jsonPath)) {
-    Output::write('Build file ');
+    Output::write('Build file ', Output::RED);
     Output::write($jsonPath, Output::CYAN);
-    Output::writeln(' not found');
+    Output::writeln(' not found', Output::RED);
     return;
 }
 
@@ -25,7 +25,7 @@ Output::writeln("=====   Project: {$json->name}", Output::CYAN);
 Output::writeln("=====   Version: {$json->version}", Output::CYAN);
 
 if(count($argv) < 2) {
-    Output::writeln('No target defined');
+    Output::writeln('No target defined', Output::RED);
     return;
 }
 $targetParam = $argv[1];
@@ -33,9 +33,9 @@ Output::writeln("=====    Target: {$targetParam}", Output::CYAN);
 Output::newln();
 
 if(!isset($json->targets->{$targetParam})) {
-    Output::write('Target ');
+    Output::write('Target ', Output::RED);
     Output::write($targetParam, Output::CYAN);
-    Output::writeln(' not defined');
+    Output::writeln(' not defined', Output::RED);
     return;
 }
 $target = $json->targets->{$targetParam};
