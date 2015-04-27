@@ -1,0 +1,9 @@
+{
+    "name": "Jalol",
+    "version": "1.0",
+    "targets": {
+        "update": {
+            "console": "php app/console cache:clear"
+        }
+    }
+}
