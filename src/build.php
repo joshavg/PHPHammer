@@ -63,18 +63,18 @@ function execTarget($name) {
     $target = Globals::get('buildfile')['targets'][$name];
 
     foreach($target as $line) {
-        $builder = $line['builder'];
+        $builder = $line[0];
         Output::write('Executing builder ');
         Output::write($builder, Output::CYAN);
 
         if($builder === 'target') {
             Output::write(' with target ');
-            Output::writeln($line['target'], Output::CYAN);
+            Output::writeln($line[1], Output::CYAN);
         } else {
             Output::newln();
         }
 
-        $builder = $line['builder'];
+        $builder = $line[0];
         $builder($line);
     }
 }

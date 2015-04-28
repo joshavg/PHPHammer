@@ -1,13 +1,13 @@
 <?php
 
 function console($line) {
-    Output::writeln("executing {$line['arg']}");
-    shell_exec($line['arg']);
+    Output::writeln("executing {$line[1]}");
+    shell_exec($line[1]);
 }
 
 function changeowner($arg) {
-    $owner = $arg['owner'];
-    $dirs = $arg['dirs'];
+    $owner = $arg[1];
+    $dirs = $arg[2];
 
     foreach($dirs as $dir) {
         shell_exec("chown -R {$owner} {$dir}");
@@ -15,8 +15,8 @@ function changeowner($arg) {
 }
 
 function changemod($arg) {
-    $mode = $arg['mode'];
-    $dirs = $arg['dirs'];
+    $mode = $arg[1];
+    $dirs = $arg[2];
 
     foreach($dirs as $dir) {
         shell_exec("chmod -R {$mode} {$dir}");
@@ -24,5 +24,9 @@ function changemod($arg) {
 }
 
 function target($arg) {
-    execTarget($arg['target']);
+    execTarget($arg[1]);
+}
+
+function output($arg) {
+    Output::writeln("===== {$arg[1]}", Output::BLUE);
 }

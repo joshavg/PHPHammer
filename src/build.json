@@ -14,27 +14,31 @@
     
     "targets": {
         "rights": [
-            {
-                "builder": "changeowner",
-                "owner": "www-data",
-                "dirs": "$rightsdirs"
-            },
-            {
-                "builder": "changemod",
-                "mode": "0775",
-                "dirs": "$rightsdirs"
-            }
+            [ "changeowner", "www-data", "$rightsdirs" ],
+            [ "changemod", "0755", "$rightsdirs" ]
         ],
-        
         "cacheclear": [
-            {
-                "builder": "console",
-                "arg": "olol"
-            },
-            {
-                "builder": "target",
-                "target": "rights"
-            }
+            [ "output", "clearing cache" ],
+            [ "console", "olol" ],
+            [ "output", "directory rights" ],
+            [ "target", "rights" ]
+        ],
+        "assets": [
+            [ "target", "cacheclear" ],
+            [ "console", "php app/console assets:install" ],
+            [ "target", "rights" ]
+        ],
+        "install": [
+            [ "console", "composer update --optimize-autoloader" ],
+            [ "target", "postupdate" ],
+            [ "output", "open config.php from your webbrowser for further checks" ]
+        ],
+        "postupdate": [
+            [ "console", "php app/console cache:clear --env=prod" ],
+            [ "console", "php app/console cache:warmup --env=prod" ],
+            [ "console", "php app/console assets:install --env=prod" ],
+            [ "console", "php app/console assetic:dump --env=prod" ],
+            [ "target", "rights" ]
         ]
     }
 }
