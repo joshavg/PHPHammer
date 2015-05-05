@@ -1,7 +1,8 @@
 <?php
 
-require 'output.php';
-require 'globals.php';
+require 'Output.php';
+require 'Globals.php';
+require 'Hammer.php';
 
 foreach(scandir(__DIR__ . '/builders/') as $path) {
     if($path === '.' || $path === '..') continue;
@@ -18,6 +19,9 @@ if(!file_exists($jsonPath)) {
 }
 
 Output::writeln("===== PHPHAMMER", Output::CYAN);
+
+$os = Hammer::getOs();
+Output::writeln("=====        OS: {$os}", Output::CYAN);
 Output::writeln("===== Buildfile: {$jsonPath}", Output::CYAN);
 
 $jsonContent = file_get_contents($jsonPath);
@@ -58,24 +62,4 @@ if(!isset($json['targets'][$targetParam])) {
 }
 
 Globals::set('buildfile', $json);
-
-function execTarget($name) {
-    $target = Globals::get('buildfile')['targets'][$name];
-
-    foreach($target as $line) {
-        $builder = $line[0];
-        Output::write('Executing builder ');
-        Output::write($builder, Output::CYAN);
-
-        if($builder === 'target') {
-            Output::write(' with target ');
-            Output::writeln($line[1], Output::CYAN);
-        } else {
-            Output::newln();
-        }
-
-        $builder = $line[0];
-        $builder($line);
-    }
-}
-execTarget($targetParam);
+Hammer::execTarget($targetParam);
