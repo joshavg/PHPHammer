@@ -38,5 +38,9 @@ class Hammer {
 
         return static::OS_UNKNOWN;
     }
+    
+    public static function execConsole($line) {
+        Output::writeln(trim(shell_exec($line)));
+    }
 
 }

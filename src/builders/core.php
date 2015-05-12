@@ -2,7 +2,7 @@
 
 function console($line) {
     Output::writeln("executing {$line[1]}");
-    Output::writeln(trim(shell_exec($line[1])));
+    Hammer::execConsole($line[1]);
 }
 
 function changeowner($arg) {
@@ -14,7 +14,7 @@ function changeowner($arg) {
     $dirs = $arg[2];
 
     foreach($dirs as $dir) {
-        Output::writeln(trim(shell_exec("chown -R {$owner} {$dir}")));
+        Hammer::execConsole("chown -R {$owner} {$dir}");
     }
 }
 
@@ -27,7 +27,7 @@ function changemod($arg) {
     $dirs = $arg[2];
 
     foreach($dirs as $dir) {
-        Output::writeln(trim(shell_exec("chmod -R {$mode} {$dir}")));
+        Hammer::execConsole("chmod -R {$mode} {$dir}");
     }
 }
 
@@ -40,7 +40,7 @@ function changegroup($arg) {
     $dirs = $arg[2];
     
     foreach($dirs as $dir) {
-        Output::writeln(trim(shell_exec("chgrp -R {$grp} {$dir}")));
+        Hammer::execConsole("chgrp -R {$grp} {$dir}");
     }
 }
 
