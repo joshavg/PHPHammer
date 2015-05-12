@@ -31,6 +31,19 @@ function changemod($arg) {
     }
 }
 
+function changegroup($arg) {
+    if(Hammer::getOs() == Hammer::OS_WIN) {
+        return;
+    }
+    
+    $grp = $arg[1];
+    $dirs = $arg[2];
+    
+    foreach($dirs as $dir) {
+        Output::writeln(trim(shell_exec("chgrp -R {$grp} {$dir}")));
+    }
+}
+
 function target($arg) {
     Hammer::execTarget($arg[1]);
 }
