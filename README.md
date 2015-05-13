@@ -62,12 +62,12 @@ This sample build file provides the following information:
 Build targets work as follows:
 
 -   You define a name for your target, eg "rights"
--   You define each step of the target as array
+-   You define each step of the target as an array
 -   The first entry of this array is the builder's name
--   The builder's name is at the same time the name of a php function sitting somewhere in a PHP file under the `src/` directory
+-   The builder's name is at the same time the name of a php function sitting somewhere in a PHP file under the `src/builders/` directory
 -   The complete array will be passed to this function and executed
 
 
 ## How can I support you?
 
-Fork me, contribute your builders, create push requests, buy me a beer.
+Fork me, contribute your builders, create pull requests, buy me a beer.
