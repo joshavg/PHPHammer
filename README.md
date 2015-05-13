@@ -2,7 +2,7 @@
 
 ## What is PHPHammer?
 
-PHPHammer is a build tool, built in native PHP. It uses build script written with JSON.
+PHPHammer is a build tool, built in native PHP. It uses build scripts written with JSON.
 
 
 ## Why did you build another build tool? Phing is great.
