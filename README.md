@@ -68,6 +68,25 @@ Build targets work as follows:
 -   The complete array will be passed to this function and executed
 
 
+## How can I use PHPHammer?
+
+### First, create your build file
+
+You can use the example file as a start. Put your build file named as `build.json` in your project's root folder.
+
+### Second, build it
+
+    php phar.php
+
+This will create a directory called `bin/`. There you will find a file called `phphammer.phar`. Move it to your project's root folder.
+
+### Third, swing your hammer
+
+    php phphammer.phar TARGET
+
+where TARGET is your defined target you want to execute.
+
+
 ## How can I support you?
 
 Fork me, contribute your builders, create pull requests, buy me a beer.
