@@ -40,7 +40,7 @@ class Hammer {
     }
     
     public static function execConsole($line) {
-	shell_exec($line);
+	return shell_exec($line);
     }
 
 }
