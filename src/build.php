@@ -1,5 +1,7 @@
 <?php
 
+$start = microtime(true);
+
 require 'Output.php';
 require 'Globals.php';
 require 'Hammer.php';
@@ -64,3 +66,8 @@ if(!isset($json['targets'][$targetParam])) {
 
 Globals::set('buildfile', $json);
 Hammer::execTarget($targetParam);
+
+$duration = (microtime(true) - $start) / 1000;
+
+Output::newln();
+Output::writeln("===== Duration: {$duration}s", Output::CYAN);
