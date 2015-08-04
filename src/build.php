@@ -28,7 +28,8 @@ $jsonContent = file_get_contents($jsonPath);
 $json = json_decode($jsonContent, true);
 
 if($json === null) {
-    Output::writeln('Build file invalid', Output::RED);
+    Output::writeln('Build file invalid:', Output::RED);
+    Output::writeln(json_last_error_msg(), Output::RED);
     return;
 }
 
