@@ -40,7 +40,7 @@ class Hammer {
     }
     
     public static function execConsole($line) {
-        Output::writeln(trim(shell_exec($line)));
+	return shell_exec($line);
     }
 
 }
