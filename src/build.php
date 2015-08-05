@@ -69,7 +69,7 @@ if(!isset($json['targets'][$targetParam])) {
 Globals::set('buildfile', $json);
 Hammer::execTarget($targetParam);
 
-$duration = (microtime(true) - $start);
+$duration = microtime(true) - $start;
 
 Output::newln();
 Output::writeln("===== Duration: {$duration}s", Output::CYAN);
