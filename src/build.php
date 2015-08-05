@@ -2,16 +2,18 @@
 
 $start = microtime(true);
 
+DEFINE('DS', DIRECTORY_SEPARATOR);
+
 require 'Output.php';
 require 'Globals.php';
 require 'Hammer.php';
 
-foreach(scandir(__DIR__ . '/builders/') as $path) {
+foreach(scandir(__DIR__ . DS . 'builders' . DS) as $path) {
     if($path === '.' || $path === '..') continue;
-    require __DIR__ . '/builders/' . $path;
+    require __DIR__ . DS . 'builders' . DS . $path;
 }
 
-$jsonPath = getcwd() . DIRECTORY_SEPARATOR . 'build.json';
+$jsonPath = getcwd() . DS . 'build.json';
 
 if(!file_exists($jsonPath)) {
     Output::write('Build file ', Output::RED);
